@@ -6,6 +6,49 @@
 <body>
 <h1>User, welcome spring boot security page!</h1>
 
+<table class="table">
+    <thead>
+    <tr>
+        <td>
+        <th scope="col">Name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:object="${user}">
+        <td>
+        <td th:text="${user.getName()}"/></td>
+        <td th:text="${user.getLastName()}"/></td>
+        <td th:text="${user.getAge()}"/></td>
+        <td th:text="${user.getEmail()}"/></td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<style>
+
+    table {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        width: 30%;
+    }
+
+    td {
+        border: 1px solid grey;
+    }
+
+    th {
+        border: 1px solid grey;
+    }
+
+
+</style>
+</div>
+<p><a href="/logout"><input type="submit" value="Выйти из аккаунта"></a></p>
+</div>
 
 </body>
 </html>

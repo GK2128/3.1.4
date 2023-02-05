@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+</head>
+<body>
+<div th:switch="${users}">
+        <h2>Список пользователей</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Возраст</th>
+                <th scope="col">Email</th>
+                <th scope="col">Пароль</th>
+                <th scope="col">Роль</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.getId()}"/>
+                </td>
+                <td th:text="${user.getName()}"/>
+                </td>
+                <td th:text="${user.getLastName()}"/>
+                </td>
+                <td th:text="${user.getAge()}"/>
+                </td>
+                <td th:text="${user.getEmail()}"/>
+                </td>
+                <td th:text="${user.getPassword()}"/>
+                </td>
+                <td th:text="${user.getRoles()}"/>
+                </td>
+                <td><a th:href="@{/admin/{id}/edit(id=${user.getId()})}">
+                    <input type="submit" value="Изменить"></a></td>
+                <td><form th:method="DELETE" th:action="@{/admin/{id}/delete(id=${user.getId()})}">
+                    <input type="submit" value="Удалить"/></form></td>
+            </tr>
+            </tbody>
+        </table>
+        <style>
+
+            table {
+                border: 1px solid grey;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            td {
+                border: 1px solid grey;
+            }
+
+            th {
+                border: 1px solid grey;
+            }
+
+
+        </style>
+        <hr/>
+    </div>
+    <a th:href="@{/admin/new}">
+        <input type="submit" value="Новый пользователь"/></a>
+</div>
+</div>
+<p><a href="/logout"><input type="submit" value="Выйти из аккаунта"></a></p>
+</div>
+
+</body>
+</html>
