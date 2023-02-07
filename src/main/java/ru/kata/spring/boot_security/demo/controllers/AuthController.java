@@ -39,7 +39,7 @@ public class AuthController {
     }
     @PostMapping("/registration")
     public String createUser(@ModelAttribute("user") User user) throws Exception {
-        user.setRoles(roleRepository.findAllById(Collections.singleton(2L)));
+        user.setRoles(roleRepository.findAllById(Collections.singleton(1L)));
         userService.saveUser(user);
         return "redirect:/login";
     }
@@ -51,7 +51,7 @@ public class AuthController {
     }
     @PostMapping("/registrationadmin")
     public String createUserAdmin(@ModelAttribute("user") User user) throws Exception {
-        user.setRoles(roleRepository.findAllById(Collections.singleton(1L)));
+        user.setRoles(roleRepository.findAllById(Collections.singleton(2L)));
         userService.saveUser(user);
         return "redirect:/login";
     }
