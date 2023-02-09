@@ -82,7 +82,7 @@ public class AdminController {
 //    }
     @PatchMapping(value = "/{id}/edit")
     public String editUse(@ModelAttribute("user") User user, @RequestParam("rolesSelected")Long[] rolesId,
-                              BindingResult bindingResult, Model model) throws Exception {
+                              BindingResult bindingResult, Model model){
         model.addAttribute("allRoles", userService.listRoles());
         if (bindingResult.hasErrors()) {
             return "admin/admin";
